@@ -1,0 +1,17 @@
+{
+  "manifest_version": 3,
+  "name": "CommercePulse Price Watch",
+  "version": "0.1.0",
+  "description": "Watch indexed products and collective-buy opportunities from the current tab.",
+  "permissions": ["activeTab", "storage", "tabs"],
+  "host_permissions": ["http://localhost:8000/*"],
+  "action": {
+    "default_title": "CommercePulse",
+    "default_popup": "popup.html"
+  },
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  }
+}
+

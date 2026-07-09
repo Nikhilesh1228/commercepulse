@@ -1,0 +1,60 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "commercepulse"
+version = "0.1.0"
+description = "Event-driven collaborative commerce backend with GraphQL and browser extension"
+readme = "README.md"
+requires-python = ">=3.12"
+license = { text = "MIT" }
+authors = [{ name = "Nikhilesh Sriram Ruthala", email = "nikhilesh28005@gmail.com" }]
+dependencies = [
+  "alembic>=1.14,<2",
+  "authlib>=1.4,<2",
+  "elasticsearch>=8.17,<9",
+  "email-validator>=2.2,<3",
+  "fastapi>=0.115,<1",
+  "httpx>=0.28,<1",
+  "itsdangerous>=2.2,<3",
+  "kafka-python-ng>=2.2,<3",
+  "prometheus-client>=0.21,<1",
+  "psycopg[binary]>=3.2,<4",
+  "pydantic-settings>=2.7,<3",
+  "PyJWT>=2.10,<3",
+  "pymongo>=4.11,<5",
+  "python-multipart>=0.0.20,<1",
+  "redis>=5.2,<6",
+  "sqlalchemy>=2.0,<3",
+  "strawberry-graphql[fastapi]>=0.260,<1",
+  "uvicorn[standard]>=0.34,<1",
+]
+
+[project.optional-dependencies]
+dev = [
+  "mypy>=1.14,<2",
+  "pytest>=8.3,<9",
+  "pytest-cov>=6,<7",
+  "ruff>=0.9,<1",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["app"]
+
+[tool.pytest.ini_options]
+addopts = "-q --strict-markers --disable-warnings --cov=app --cov-report=term-missing --cov-fail-under=85"
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "SIM", "RUF"]
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+plugins = ["pydantic.mypy", "strawberry.ext.mypy_plugin"]
+exclude = ["alembic"]

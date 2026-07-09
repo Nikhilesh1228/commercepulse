@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CommercePulse</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <main>
+      <h1>CommercePulse</h1>
+      <p class="subtitle">Price watch for the current product page</p>
+      <label>API URL <input id="apiUrl" value="http://localhost:8000" /></label>
+      <label>JWT token <input id="token" type="password" autocomplete="off" /></label>
+      <button id="detect">Detect current product</button>
+      <section id="product" hidden>
+        <h2 id="productName"></h2>
+        <p id="price"></p>
+        <label>Target price (minor units) <input id="target" type="number" min="1" /></label>
+        <button id="watch">Create price watch</button>
+      </section>
+      <p id="status" role="status"></p>
+    </main>
+    <script src="popup.js"></script>
+  </body>
+</html>
+
